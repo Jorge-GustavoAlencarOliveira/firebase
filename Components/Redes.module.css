@@ -1,0 +1,24 @@
+.redes{
+  height: 250px;
+  background-color: #000;
+  margin: 1rem 0;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.icon img{
+  width: 75px;
+  height: 75px;
+  cursor: pointer;
+}

@@ -1,0 +1,36 @@
+.search{
+  display: grid;
+  align-items: center;
+  height: 1.4rem;
+}
+
+.search input{
+  grid-area: 1/1;
+  height: 100%;
+  padding: .5rem .6rem .5rem .7rem;
+  background-color: #f1f1f1;
+  border-radius: 1rem;
+  border: none;
+  width: 20rem;
+  outline: none;
+}
+
+.search button{
+  grid-area: 1/1;
+  background-color: #f1f1f1;
+  justify-self: end;
+  height: 100%;
+  padding-right: .6rem;
+  border-radius: 1.5rem;
+  border: none;
+  cursor: pointer;
+}
+.search button svg{
+  width: 15px;
+  height: 15px;
+  padding-top: 2px;
+}
+
+.search button svg:hover{
+  color: rgba(0, 0, 0, .3)
+}
