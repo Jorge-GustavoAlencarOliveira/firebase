@@ -4,7 +4,7 @@ import Logo from '../assets/icons/logo.svg';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import {FiUser} from 'react-icons/Fi';
+// import {FiUser} from 'react-icons/Fi';
 import { UserContext } from '../UserContext';
 
 const Header = () => {
@@ -26,7 +26,7 @@ const Header = () => {
               </div>
             ) : (
               <Link className={styles.link} href='/admin'>
-                Administrador <FiUser size={20}/> 
+                Administrador 
               </Link>
             )}
         </nav>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {FiSearch} from 'react-icons/Fi';
+// import {FiSearch} from 'react-icons/Fi';
 import styles from './Search.module.css';
 
 const Search = ({onChange, value}) => { 
@@ -11,9 +11,6 @@ const Search = ({onChange, value}) => {
         placeholder='Buscar'
         value={value}
       />
-      <button>
-        <FiSearch />
-      </button>
     </div>
   )
 }
