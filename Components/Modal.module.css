@@ -1,0 +1,25 @@
+.modal{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  width: 100%;
+  max-width: 930px;
+  top: 0;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  background-color: dimgray;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.form input{
+  width: 100%;
+}

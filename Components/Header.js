@@ -21,7 +21,7 @@ const Header = () => {
         <nav className={styles.admin}>
             {data ? (
               <div className={styles.sign}>
-                <span>{data.email}</span>
+                <Link href='/admin/area'>{data.email}</Link>
                 <button onClick={userLogout}>Sair</button>
               </div>
             ) : (

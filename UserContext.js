@@ -2,8 +2,10 @@ import React from 'react'
 import { auth } from './Components/Firebase';
 import {signInWithEmailAndPassword, onAuthStateChanged, signOut} from 'firebase/auth';
 import {useRouter} from "next/router";
+import { toast } from 'react-toastify';
 
 export const UserContext = React.createContext();
+
 
 const UserStorage = ({children}) => {
   const router = useRouter();
@@ -18,6 +20,7 @@ const UserStorage = ({children}) => {
       setLoading(true);
       await signInWithEmailAndPassword(auth, email, password)
       .then((user) => {
+        toast.success('Usuário logado com sucesso');
         router.push('/admin/area');
         setData(user.user);
         setLogin(true);
@@ -48,6 +51,7 @@ const UserStorage = ({children}) => {
       await signOut(auth)
       setLogin(false);
       setData(null);
+      toast.info('Usuário deslogado')
       router.push('/')
     }
   )

@@ -55,7 +55,6 @@ const index = () => {
       };
     loadProduto();         
   },[])
-  console.log(result.length)
   return (
     <div className='container'>
       <div className={styles.subHeader}>

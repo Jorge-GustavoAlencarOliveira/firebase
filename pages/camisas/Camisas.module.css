@@ -69,3 +69,12 @@
   object-fit: cover;
 }
 
+.descricao{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.descricao button{
+  cursor: pointer;
+}

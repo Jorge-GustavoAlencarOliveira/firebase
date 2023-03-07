@@ -3,6 +3,7 @@ import styles from './Home.module.css';
 import { db} from '../Components/Firebase';
 import { collection, onSnapshot} from 'firebase/firestore';
 import Carousel from '../Components/Carousel';
+import Head from 'next/head';
 
 const Home = () => {
   const [produto, setProduto] = React.useState([]);   
@@ -25,24 +26,27 @@ const Home = () => {
     loadProduto();         
   },[]);
   return (
-    <section>
-      <div className={styles.container}>
-        <h1>Destaques</h1>
-        <Carousel produto={produto}/>
-      </div>
-      <div className={styles.container}>
-        <h1>Camisas</h1>
-        <Carousel produto={produto}/>
-      </div>
-      <div className={styles.container}>
-        <h1>Calças</h1>
-        <Carousel produto={produto}/>
-      </div>
-    </section>         
+    <>
+      <Head>
+        <title>OutletMoc</title>
+      </Head>
+      <section>
+        <div className={styles.container}>
+          <h1>Destaques</h1>
+          <Carousel produto={produto}/>
+        </div>
+        <div className={styles.container}>
+          <h1>Camisas</h1>
+          <Carousel produto={produto}/>
+        </div>
+        <div className={styles.container}>
+          <h1>Calças</h1>
+          <Carousel produto={produto}/>
+        </div>
+      </section>         
+    </>
   )
 }        
     
 export default Home;
-
-
 

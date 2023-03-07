@@ -2,12 +2,13 @@ import React from "react";
 import Link from "next/link";
 import styles from "./Admin.module.css";
 import { UserContext } from "../../UserContext";
+import { useRouter } from "next/router";
 
 const Admin = () => {
-  const {userLogin} = React.useContext(UserContext)
+  const {userLogin, login} = React.useContext(UserContext)
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-
+  const router = useRouter();
  
   async function handleLogin (event){
     event.preventDefault();
@@ -17,7 +18,9 @@ const Admin = () => {
       alert('Preencha todos os campos')
     }
   }
-
+  if(login){
+    router.push('/admin/area');
+  }
   return (
     <main className={styles.containerhome}>
         <h1 className={styles.title}>Área do administrador</h1>
