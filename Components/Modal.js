@@ -7,11 +7,22 @@ import { useRouter } from 'next/router';
 const Modal = ({setModal, modal, produto, id}) => {
 
   const router = useRouter();
-  const [nome, setNome] = React.useState(produto.nome);
-  const [preco, setPreco] = React.useState(produto?.preco);
-  const [descricao, setDescricao] = React.useState(produto?.descricao);
+  
+  React.useEffect(() => {
+    setNome(produto.nome);
+    setPreco(produto.preco);
+    setDescricao(produto.descricao)
+  }, [modal])
+
+  const [nome, setNome] = React.useState('');
+  const [preco, setPreco] = React.useState('');
+  const [descricao, setDescricao] = React.useState('');
   
   async function updateTarefa() {
+      if(nome === '' || preco === '' || descricao === ''){
+        toast.warning('Preencha todos os campos');
+        return        
+      }
       if(produto){
         const docRef = doc(db, 'produtos', id);
         await updateDoc(docRef, {
@@ -35,10 +46,14 @@ const Modal = ({setModal, modal, produto, id}) => {
     updateTarefa()
   }
 
+  function handleOutsideClick (event){
+    if(event.target === event.currentTarget) setModal(false)
+  }
+
   if (modal){
     return (
-      <div className={styles.modal}>
-        <div>
+      <div className={styles.modal} onClick={handleOutsideClick}>
+        <div >
           <form onSubmit={handleUpdate} className={styles.form}>
             <label>Nome</label>
             <input 

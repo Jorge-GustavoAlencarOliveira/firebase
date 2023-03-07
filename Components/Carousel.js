@@ -4,11 +4,9 @@ import {motion} from 'framer-motion'
 import Link from 'next/link'
 
 const Carousel = ({produto}) => {
-  console.log(produto)
   const carousel = React.useRef();
   const [width, setWidth] = React.useState(0)
   React.useEffect(() =>{
-    console.log(width)
    setWidth(carousel.current?.scrollWidth - carousel.current?.offsetWidth)
   },[produto])
   return (
