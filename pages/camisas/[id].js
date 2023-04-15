@@ -8,33 +8,17 @@ import { UserContext } from '../../UserContext';
 import {toast} from 'react-toastify'
 import Modal from '../../Components/Modal';
 
-const Camisas = () => {
+const Camisas = ({produtos}) => {
+  console.log(produtos)
   const {isFallback} = useRouter()
   const {data} = React.useContext(UserContext)
   const router = useRouter();
   const {id} = router.query;
-  const [produto, setProduto] = React.useState({});
-  const [imagem, setImagem] = React.useState('');
+  const [produto, setProduto] = React.useState(produtos || {});
+  const [imagem, setImagem] = React.useState(produtos?.image[0]);
   const imageRef = React.useRef();
   const [modal, setModal] = React.useState(false)
-
-  React.useEffect(() =>{ 
-    async function singleProduto (){
-      if(id){
-        const docRef = doc(db, 'produtos', id);
-        await getDoc(docRef)
-        .then((item) =>{
-          setProduto(item.data())
-          setImagem(item.data().image[0])
-        }) 
-        .catch(error =>{
-          console.log('error')
-        }) 
-      }
-    }
-    singleProduto();
-  },[id]);
-     
+    
   function handleClick(src, target){
     imageRef.current.childNodes.forEach((item) => {
       item.classList.remove('borda')
@@ -135,7 +119,7 @@ export const getStaticProps = async (ctx) =>{
     const produto = docSnap.data()
     return {
       props:{
-        produto: produto
+        produtos: produto
       }
     }
   }catch(err){
