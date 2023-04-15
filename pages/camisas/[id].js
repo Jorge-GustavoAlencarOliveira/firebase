@@ -1,13 +1,15 @@
 import React from 'react'
 import { useRouter } from 'next/router';
-import {doc, getDoc, deleteDoc} from 'firebase/firestore'
+import {doc, getDoc, deleteDoc, query, collection, getDocs} from 'firebase/firestore'
 import { db } from '../../Components/Firebase';
 import Link from 'next/link';
 import styles from './Camisas.module.css'
 import { UserContext } from '../../UserContext';
 import {toast} from 'react-toastify'
 import Modal from '../../Components/Modal';
+
 const Camisas = () => {
+  const {isFallback} = useRouter()
   const {data} = React.useContext(UserContext)
   const router = useRouter();
   const {id} = router.query;
@@ -50,6 +52,14 @@ const Camisas = () => {
 
   function handleUpdate(){
     setModal(true);
+  }
+
+  if(isFallback){
+    return(
+      <div>
+        Carregando...
+      </div>
+    )
   }
    
   if(produto) 
@@ -96,3 +106,45 @@ const Camisas = () => {
 }
 
 export default Camisas;
+
+export const getStaticPaths = async () =>{
+  const q = query(collection(db, 'produtos'))
+  const produtos = await getDocs(q)
+  let lista = []            
+  produtos.forEach(produto => {
+      lista.push({
+        id: produto.id,
+      })
+    })
+  const paths = lista.map(item => {
+    return {params: {id: item.id}}
+  } )
+
+  return{
+    paths,
+    fallback: false
+  }
+}
+
+export const getStaticProps = async (ctx) =>{
+  const {id} = ctx.params;
+  console.log(id)
+  try{
+    const ref = doc(db, 'produtos', id);
+    const docSnap = await getDoc(ref);
+    const produto = docSnap.data()
+    return {
+      props:{
+        produto: produto
+      }
+    }
+  }catch(err){
+    return{
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
+    }
+  }
+  
+}
