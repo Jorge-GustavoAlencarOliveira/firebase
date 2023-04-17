@@ -2,8 +2,10 @@ import React from 'react'
 import styles from './Carousel.module.css'
 import {motion} from 'framer-motion'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-const Carousel = ({produto}) => {
+const Carousel = ({produto, category}) => {
+  const router = useRouter()
   const carousel = React.useRef();
   const [width, setWidth] = React.useState(0)
   React.useEffect(() =>{
@@ -23,7 +25,7 @@ const Carousel = ({produto}) => {
             return (
               <motion.div className={styles.imagens} key={item.id}>
                   <img src={item.image} alt='foto'/>
-                  <Link href={`/camisas/${item.id}`}>
+                  <Link href={`/Produtos/${item.id}?category=${category}`}>
                     <div className={styles.nome}>
                       <h2>{item.nome}</h2>
                     </div>

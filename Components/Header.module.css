@@ -70,7 +70,8 @@
   padding: .5rem;
   border-radius: 20px;
   border: none;
-  min-width: 80px
+  min-width: 80px;
+  cursor: pointer
 }
 
 .headerMobile{

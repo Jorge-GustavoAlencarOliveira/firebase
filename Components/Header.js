@@ -8,13 +8,12 @@ import { UserContext } from '../UserContext';
 import {FaUser, FaSignOutAlt} from 'react-icons/fa';
 import useMedia from './Matchmedia';
 import ImagemMob from '../assets/WhatsApp Image 2022-08-01 at 20.54.08 (1).jpeg'
-
+import Categories from './Categories';
 const Header = () => {
   const {data, userLogout} = React.useContext(UserContext);
   const {pathname} = useRouter();
   const mobile = useMedia('(max-width: 600px)')  
-  
-
+  const categories = Categories();  
   return (
     <header className='container'>
       {!mobile ? (
@@ -52,12 +51,12 @@ const Header = () => {
       {!mobile ? (
         <nav>
           <ul className={styles.nav}>
-            <li><Link href='#'>Bermudas</Link></li>
-            <li><Link href='#'>Calças</Link></li>
-            <li className={pathname.startsWith('/camisas') ? 'active' : ''}><Link href='/camisas'>Camisas</Link></li>
-            <li><Link href='#'>Camisetas</Link></li>
-            <li><Link href='#'>Shorts</Link></li>
-            <li><Link href='#'>Calçados</Link></li>
+            {categories.map(category =>{
+              return(
+                <li key={category} className={pathname.endsWith(`${category}`) ? 'active' : ''}><Link href={`/Categorias/${category}`}>{category}</Link></li>
+              )
+            })}
+          
           </ul>       
         </nav>
       ) : (

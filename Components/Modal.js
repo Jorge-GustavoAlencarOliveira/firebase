@@ -4,7 +4,7 @@ import { db } from './Firebase';
 import { doc, updateDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
-const Modal = ({setModal, modal, produto, id}) => {
+const Modal = ({setModal, modal, produto, id, category}) => {
 
   const router = useRouter();
  
@@ -18,7 +18,7 @@ const Modal = ({setModal, modal, produto, id}) => {
         return        
       }
       if(produto){
-        const docRef = doc(db, 'produtos', id);
+        const docRef = doc(db, category, id);
         await updateDoc(docRef, {
           nome: nome,
           preco: preco,

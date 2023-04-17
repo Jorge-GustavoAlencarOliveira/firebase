@@ -28,6 +28,7 @@ const UserStorage = ({children}) => {
     } catch {
       setError('Login e senha inválidos');
       setLoading(false)
+      toast.error('Login e senha inválidos');
     } finally {
       setLoading(false)
     }

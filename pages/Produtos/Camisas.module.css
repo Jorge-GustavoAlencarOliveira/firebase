@@ -1,0 +1,81 @@
+.subHeader{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.title{
+  text-transform: uppercase;
+  margin: 1rem 0;
+}
+
+.camisas{
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 300px));
+  min-height: 400px;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.camisas img{
+  width: 100%;
+  height: 90%;
+}
+
+.crumb{
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.produto{
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+  max-height: 700px;
+}
+
+.img{
+  display: grid;
+  grid-template-columns: 120px 500px;
+  gap: 1rem;
+}
+.tumb{
+  max-height: 700px;
+  overflow-y: auto;
+  width: 120px;
+}
+.tumb::-webkit-scrollbar {
+  width: .5rem;
+  margin-left: .5rem;
+}
+.tumb::-webkit-scrollbar-thumb {
+  background: gainsboro;
+  border-radius: 10px;
+}
+.tumb img{
+  width: 90%;
+  margin-bottom: .5rem;
+  cursor: pointer;
+}
+
+.principal{
+  max-height: 700px;
+}
+.principal img{
+  max-height: 100%;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.descricao{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.descricao button{
+  cursor: pointer;
+}

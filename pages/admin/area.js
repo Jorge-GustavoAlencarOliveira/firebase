@@ -6,6 +6,7 @@ import styles from "./Admin.module.css"
 import {FiUpload} from 'react-icons/fi'
 import { toast } from 'react-toastify';
 import ProtectedRoute from '../../Components/Helper/ProtectedRoute'
+import Categories from '../../Components/Categories';
 
 const Area = () => {
   const [nome, setNome] = React.useState('');
@@ -14,8 +15,12 @@ const Area = () => {
   const [img, setImg] = React.useState([]);
   const [url, setUrl] = React.useState([]);
   const [avatar, setAvatar] = React.useState('')
+  const categories = Categories();
+  const [category, setCategory] = React.useState(categories[0])
 
-  
+  function handleSelect(value){
+    setCategory(categories[value])
+  }
 
   function handleImg ({target}){
     for (let i = 0; i < target.files.length; i++){
@@ -29,7 +34,7 @@ const Area = () => {
     if(url.length === 0){
       return 
     }
-    await addDoc(collection(db, 'produtos'), {
+    await addDoc(collection(db, category), {
       nome: nome,
       preco: preco,
       descricao: descricao,
@@ -88,6 +93,14 @@ const Area = () => {
               <button>enviar fotos</button>   
             </form>
             <form className='formulario' onSubmit={handleSubmit}>
+              <label>Categoria</label>
+              <select onChange={({target}) => handleSelect(target.value)}>
+                {categories.map((item, index) => {
+                  return(
+                    <option key={index} value={index}>{item}</option>
+                  )
+                })}
+              </select>
               <label >Nome</label>
               <input 
                 type='text' 
