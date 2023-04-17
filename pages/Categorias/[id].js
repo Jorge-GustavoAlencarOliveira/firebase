@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { db } from '../../Components/Firebase';
-import { collection, onSnapshot, query, where, getDocs } from 'firebase/firestore';
+import { collection, query, where, getDocs } from 'firebase/firestore';
 import styles from './Camisas.module.css'
 import Card from '../../Components/Card';
 import Search from '../../Components/Search';
@@ -37,6 +37,7 @@ const index = ({produtos}) => {
     }
     Search();
   },[search])
+   
 
   function handleSearch({target}){
     setSearch(target.value)
@@ -78,19 +79,7 @@ const index = ({produtos}) => {
 
 export default index
 
-export const getStaticPaths = async () =>{
-  const categories = Categories()
-  const paths = categories.map(item => {
-    return {params: {id: item}}
-  } )
-
-  return{
-    paths,
-    fallback: false
-  }
-}
-
-export const getStaticProps = async (ctx) =>{
+export const getServerSideProps = async (ctx) =>{
   const {id} = ctx.params;
   try{
     const q = query(collection(db, id));

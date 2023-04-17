@@ -4,11 +4,13 @@ import MainContainer from "../Components/MainContainer"
 import UserStorage from "../UserContext"
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from "next/router";
 export default function MyApp({ Component, pageProps }) {
+  const router = useRouter();
   return (
     <UserStorage>
       <MainContainer>
-        <Component {...pageProps} />
+        <Component key={router.asPath} {...pageProps} />
         <ToastContainer autoClose={3000}/>
       </MainContainer>      
     </UserStorage>
