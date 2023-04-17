@@ -1,4 +1,3 @@
-import React from 'react';
 import Header from './Header';
 import Redes from './Redes';
 
@@ -8,8 +7,8 @@ const MainContainer = ({children}) => {
       <main>
         <Header/>      
         {children}
+        <Redes/>
       </main>
-      <Redes/>
     </>
   )
 }

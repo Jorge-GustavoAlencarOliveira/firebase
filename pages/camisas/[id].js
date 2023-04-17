@@ -9,7 +9,6 @@ import {toast} from 'react-toastify'
 import Modal from '../../Components/Modal';
 
 const Camisas = ({produtos}) => {
-  console.log(produtos)
   const {isFallback} = useRouter()
   const {data} = React.useContext(UserContext)
   const router = useRouter();

@@ -5,12 +5,16 @@ import styles from './Camisas.module.css'
 import Card from '../../Components/Card';
 import Search from '../../Components/Search';
 import { useRouter } from 'next/router';
+import useMedia from '../../Components/Matchmedia';
 
 const index = () => {
   const {pathname} = useRouter();
   const [produto, setProduto] = React.useState([]);
   const [search, setSearch] = React.useState('');
-  const [result, setResult] = React.useState([])
+  const [result, setResult] = React.useState([]);
+  const mobile = useMedia('(max-width: 600px)');
+  console.log(mobile)
+
   React.useEffect(() => {
     async function Search (){      
       if(search){
@@ -59,7 +63,9 @@ const index = () => {
     <div className='container'>
       <div className={styles.subHeader}>
         <h1 className={styles.title}>Camisas</h1>
-        <Search onChange={handleSearch} value={search} />
+        {!mobile && (
+          <Search onChange={handleSearch} value={search} />
+        )}
       </div>
          {result.length ? 
          <div className={styles.camisas}>

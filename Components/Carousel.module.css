@@ -1,5 +1,7 @@
 .carousel{
-  max-width: 928px;
+  max-width: 60rem;
+  width: 100%;
+  padding: 0 1rem;
 }
 .inner{
 display: flex; 
@@ -34,4 +36,10 @@ gap: .9rem;
   font-size: 1.5rem;
   margin: auto;
 
+}
+
+@media (max-width: 998px){
+  .carousel{
+    padding: 0;
+  }
 }

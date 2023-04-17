@@ -24,7 +24,7 @@ const Admin = () => {
   return (
     <main className={styles.containerhome}>
         <h1 className={styles.title}>Área do administrador</h1>
-        <span>Gerencie seu sie</span>
+        <span>Gerencie seu site</span>
         <form onSubmit={handleLogin} className={styles.formulario}>
           <label >email:</label>
           <input 

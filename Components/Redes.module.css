@@ -22,3 +22,14 @@
   height: 75px;
   cursor: pointer;
 }
+
+@media (max-width: 700px){
+  .redes h1{
+    font-size: 1.2rem;
+  }
+  .icon img{
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+  }
+}

@@ -21,9 +21,9 @@ const UserStorage = ({children}) => {
       await signInWithEmailAndPassword(auth, email, password)
       .then((user) => {
         toast.success('Usuário logado com sucesso');
-        router.push('/admin/area');
         setData(user.user);
         setLogin(true);
+        router.push('/admin/area');
       })
     } catch {
       setError('Login e senha inválidos');
@@ -46,13 +46,14 @@ const UserStorage = ({children}) => {
     }
     checkLogin();      
   },[]);
+  
   const userLogout = React.useCallback(
     async function (){
       await signOut(auth)
       setLogin(false);
       setData(null);
+      localStorage.removeItem('userOutletmoc')
       toast.info('Usuário deslogado')
-      router.push('/')
     }
   )
   return (

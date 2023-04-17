@@ -7,16 +7,10 @@ import { useRouter } from 'next/router';
 const Modal = ({setModal, modal, produto, id}) => {
 
   const router = useRouter();
-  
-  React.useEffect(() => {
-    setNome(produto.nome);
-    setPreco(produto.preco);
-    setDescricao(produto.descricao)
-  }, [modal])
-
-  const [nome, setNome] = React.useState('');
-  const [preco, setPreco] = React.useState('');
-  const [descricao, setDescricao] = React.useState('');
+ 
+  const [nome, setNome] = React.useState(produto?.nome || "");
+  const [preco, setPreco] = React.useState(produto?.preco || "");
+  const [descricao, setDescricao] = React.useState(produto?.descricao);
   
   async function updateTarefa() {
       if(nome === '' || preco === '' || descricao === ''){
@@ -33,7 +27,7 @@ const Modal = ({setModal, modal, produto, id}) => {
         .then(() => {
           toast.success('Produto atualizado');
           setModal(false);
-          router.push(`/camisas/${id}`)
+          router.reload(window.location.pathname);
         })
         .catch((err) => {
           toast.error("Algo errado ocorreu." + err)

@@ -6,7 +6,9 @@ const Card = ({produto, location}) => {
     <div className={styles.card}>
       <Link href={`${location}/${produto.id}`}>       
         <div key={produto.id} className={styles.content}>
-          <img src={produto.image} alt={produto.nome} />
+          <div className={styles.image}>
+            <img src={produto.image} alt={produto.nome} />
+          </div>
           <div className={styles.text}>
             <h1>{produto.nome}</h1>
             <span>R$ {produto.preco},00</span>

@@ -6,7 +6,7 @@ import Carousel from '../Components/Carousel';
 import Head from 'next/head';
 
 const Home = ({lista}) => {
-  const [produto, setProduto] = React.useState(lista || []);   
+  const [produto, setProduto] = React.useState(lista || []);
   return (
     <>
       <Head>
