@@ -110,7 +110,8 @@ export const getStaticProps = async (ctx) =>{
     return {
       props:{
         produtos: lista
-      }
+      },
+      revalidate: 10
     }
   }catch(err){
     return{
