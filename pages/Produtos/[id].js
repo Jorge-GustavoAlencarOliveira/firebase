@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRouter } from 'next/router';
-import {doc, getDoc, deleteDoc, query, collection, getDocs} from 'firebase/firestore'
+import {doc, getDoc, deleteDoc} from 'firebase/firestore'
 import { db } from '../../Components/Firebase';
 import Link from 'next/link';
 import styles from './Camisas.module.css'

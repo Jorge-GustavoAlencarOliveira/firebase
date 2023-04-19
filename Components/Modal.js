@@ -5,9 +5,8 @@ import { doc, updateDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 const Modal = ({setModal, modal, produto, id, category}) => {
-
+  
   const router = useRouter();
- 
   const [nome, setNome] = React.useState(produto?.nome || "");
   const [preco, setPreco] = React.useState(produto?.preco || "");
   const [descricao, setDescricao] = React.useState(produto?.descricao);

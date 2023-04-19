@@ -79,7 +79,20 @@ const index = ({produtos}) => {
 
 export default index
 
-export const getServerSideProps = async (ctx) =>{
+export const getStaticPaths = async () =>{
+  const categories = Categories();
+  const paths = categories.map(category =>{
+    return {params: {id: category}}
+  })
+  console.log(paths)
+  return {
+    paths,
+    fallback: false
+  }
+}
+
+
+export const getStaticProps = async (ctx) =>{
   const {id} = ctx.params;
   try{
     const q = query(collection(db, id));

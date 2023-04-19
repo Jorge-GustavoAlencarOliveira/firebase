@@ -4,11 +4,11 @@ import Redes from './Redes';
 const MainContainer = ({children}) => {
   return (
     <>
-      <main>
-        <Header/>      
+      <Header/>      
+      <main style={{minHeight:'60vh'}}>
         {children}
-        <Redes/>
       </main>
+      <Redes/>
     </>
   )
 }

@@ -11,8 +11,8 @@ export default function MyApp({ Component, pageProps }) {
     <UserStorage>
       <MainContainer>
         <Component key={router.asPath} {...pageProps} />
-        <ToastContainer autoClose={3000}/>
       </MainContainer>      
+      <ToastContainer autoClose={3000}/>
     </UserStorage>
   )    
 }

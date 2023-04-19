@@ -21,7 +21,7 @@ const Carousel = ({produto, category}) => {
           drag='x'
           dragConstraints={{right: 0, left: - width}}
         >
-          {produto.map((item) => {
+          {produto?.map((item) => {
             return (
               <motion.div className={styles.imagens} key={item.id}>
                   <img src={item.image} alt='foto'/>

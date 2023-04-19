@@ -9,6 +9,7 @@ import {FaUser, FaSignOutAlt} from 'react-icons/fa';
 import useMedia from './Matchmedia';
 import ImagemMob from '../assets/WhatsApp Image 2022-08-01 at 20.54.08 (1).jpeg'
 import Categories from './Categories';
+
 const Header = () => {
   const {data, userLogout} = React.useContext(UserContext);
   const {pathname} = useRouter();

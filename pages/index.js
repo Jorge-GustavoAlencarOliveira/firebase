@@ -5,10 +5,15 @@ import { collection, getDocs, query} from 'firebase/firestore';
 import Carousel from '../Components/Carousel';
 import Head from 'next/head';
 import Categories from '../Components/Categories';
+import Logo from '../assets/icons/logo.svg'
+import Image from 'next/image';
+
 
 const Home = () => {
   const categories = Categories();
   const [produto, setProduto] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
+  
   React.useEffect(() =>{
     categories.map(async(category) =>{
       const q = query(collection(db, category))
@@ -25,8 +30,17 @@ const Home = () => {
         })
         setProduto(produto => [...produto, lista]) 
     })
+    setLoading(false)
   },[])
   
+  if(loading){
+    return(
+      <div className='container' style={{display: 'flex', alignItems: 'center', justifyContent:'center', height: '80vh'}}>
+        <Image src={Logo} width={200} alt='Logo' height={200}/>
+      </div>
+    )
+  }
+
   return (
     <>
       <Head>
